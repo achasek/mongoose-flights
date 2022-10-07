@@ -10,7 +10,7 @@
 <body>
     <header>
         <a href="/flights">Go Back</a>
-        <a href="/flights/:id/tickets/new">Buy Ticket</a>
+        <a href="/flights/<%= flight._id %>/tickets/new">Buy Ticket</a>
     </header>
     <section id="show-page">
         <div>Airline: </div>
@@ -57,6 +57,28 @@
         </table>
         <% } else { %>
             <h5>No Destination Yet</h5>
+    <% } %>
+    <% if(tickets.length) { %>
+    <table>
+        <thead>
+          <tr>
+            <th>Seat</th>
+            <th>Price</th>
+            <th>Flight Number</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% tickets.forEach(function(t) { %>
+                <tr>
+                    <td><%= t.seat %></td>
+                    <td><%= t.price %></td>
+                    <td><%= t.flight %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h5>No Tickets Yet</h5>
     <% } %>
 </body>
 </html>
